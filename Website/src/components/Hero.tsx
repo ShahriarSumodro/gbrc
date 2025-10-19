@@ -1,15 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-workshop.jpg";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center">
       <div 
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        style={{ backgroundImage: `url(https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920)` }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div>
+      </div>
       </div>
 
       <div className="relative z-10 container mx-auto px-6 text-center">
@@ -51,3 +51,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
