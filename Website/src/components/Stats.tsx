@@ -1,6 +1,21 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useCountUp } from "@/hooks/useCountUp";
 
+const StatItem = ({ stat, isVisible }: { stat: { number: number; label: string; suffix: string }; isVisible: boolean }) => {
+  const count = useCountUp(stat.number, 2000, isVisible);
+  
+  return (
+    <div className="text-center">
+      <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+        {count}{stat.suffix}
+      </div>
+      <div className="text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+        {stat.label}
+      </div>
+    </div>
+  );
+};
+
 const Stats = () => {
   const { ref, isVisible } = useScrollAnimation();
   
@@ -20,19 +35,9 @@ const Stats = () => {
     >
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, index) => {
-            const count = useCountUp(stat.number, 2000, isVisible);
-            return (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                  {count}{stat.suffix}
-                </div>
-                <div className="text-sm md:text-base text-muted-foreground uppercase tracking-wide">
-                  {stat.label}
-                </div>
-              </div>
-            );
-          })}
+          {stats.map((stat, index) => (
+            <StatItem key={index} stat={stat} isVisible={isVisible} />
+          ))}
         </div>
       </div>
     </section>
