@@ -10,7 +10,6 @@ const Hero = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div>
       </div>
-      </div>
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
@@ -51,4 +50,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
 
