@@ -1,4 +1,7 @@
+import Navigation from "@/components/Navigation";
 import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 
@@ -125,23 +128,15 @@ const GalleryPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <span className="text-2xl font-bold text-foreground tracking-wider">RoboTech</span>
-            <button className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-2 rounded-md">
-              Contact
-            </button>
-          </div>
-        </div>
-      </nav>
-
+      <Navigation />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-6">
-          <button className="mb-8 flex items-center gap-2 hover:text-primary transition-colors">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Home
-          </button>
+          <Link to="/">
+            <Button variant="ghost" className="mb-8">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Button>
+          </Link>
           
           <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 tracking-tight">
             Gallery
@@ -227,6 +222,7 @@ const GalleryPage = () => {
                     </div>
                     
                     <div className="mt-4 text-center text-muted-foreground text-xs">
+                      Click to flip back
                     </div>
                   </Card>
                 </div>
