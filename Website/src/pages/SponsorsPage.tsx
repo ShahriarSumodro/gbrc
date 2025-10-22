@@ -3,16 +3,100 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+// Sponsor interface for type safety
+interface Sponsor {
+  name: string;
+  tier: string;
+  contribution: string;
+  imageUrl: string; // URL to sponsor logo/image
+  websiteUrl: string; // Sponsor's website URL
+}
 
 const SponsorsPage = () => {
-  const sponsors = [
-    { name: "Tech Corp", tier: "Platinum", contribution: "Major funding support" },
-    { name: "Engineering Solutions", tier: "Gold", contribution: "Equipment and materials" },
-    { name: "Innovation Labs", tier: "Gold", contribution: "Workshop space" },
-    { name: "Robotics Supply Co", tier: "Silver", contribution: "Component discounts" },
-    { name: "Software Systems Inc", tier: "Silver", contribution: "Software licenses" },
-    { name: "Manufacturing Partners", tier: "Bronze", contribution: "Fabrication support" },
+  const sponsors: Sponsor[] = [
+    /*{
+    {
+      name: "Tech Corp",
+      tier: "Platinum",
+      contribution: "Major funding support",
+      imageUrl: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=400&h=400&fit=crop",
+      websiteUrl: "https://techcorp.example.com"
+    },*/
+    /*
+    {
+      name: "Engineering Solutions",
+      tier: "Gold",
+      contribution: "Equipment and materials",
+      imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=400&fit=crop",
+      websiteUrl: "https://engineeringsolutions.example.com"
+    },*/
   ];
+
+  // Reusable component for rendering a sponsor card
+  const SponsorCard = ({ sponsor }: { sponsor: Sponsor }) => {
+    const [imgError, setImgError] = useState(false);
+    
+    return (
+      <Card className="border-border bg-card hover:border-primary transition-all duration-300 w-full max-w-sm">
+        <CardHeader>
+          <a 
+            href={sponsor.websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <div className="w-full h-48 rounded-lg overflow-hidden bg-primary/5 flex items-center justify-center mb-4 hover:opacity-90 transition-opacity cursor-pointer border-2 border-transparent hover:border-primary">
+              {!imgError ? (
+                <img 
+                  src={sponsor.imageUrl} 
+                  alt={`${sponsor.name} logo`}
+                  className="w-full h-full object-cover"
+                  onError={() => setImgError(true)}
+                />
+              ) : (
+                <div className="flex flex-col items-center justify-center p-6">
+                  <div className="w-24 h-24 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                    <span className="text-3xl font-bold text-primary">
+                      {sponsor.name.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground text-center">Click to visit website</p>
+                </div>
+              )}
+            </div>
+          </a>
+          <CardTitle className="text-xl text-center">{sponsor.name}</CardTitle>
+        </CardHeader>
+        <CardContent className="text-center">
+          <p className="text-primary font-semibold mb-2">{sponsor.tier} Sponsor</p>
+          <p className="text-muted-foreground text-sm">{sponsor.contribution}</p>
+          <a 
+            href={sponsor.websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-4 text-sm text-primary hover:text-primary/80 transition-colors"
+          >
+            <svg 
+              className="w-4 h-4" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+              />
+            </svg>
+            Visit Website
+          </a>
+        </CardContent>
+      </Card>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -30,25 +114,12 @@ const SponsorsPage = () => {
             Our Sponsors
           </h1>
           <p className="text-xl text-muted-foreground mb-16 max-w-3xl">
-            We're grateful for the support of our sponsors who make our projects possible. Their contributions help us push the boundaries of robotics innovation.
+            We're grateful for the support of our sponsors who make our projects possible. Their contributions help us push the boundaries of robotics innovation. Click on any sponsor logo to visit their website.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
             {sponsors.map((sponsor, index) => (
-              <Card key={index} className="border-border bg-card hover:border-primary transition-all duration-300">
-                <CardHeader>
-                  <div className="w-20 h-20 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-primary">
-                      {sponsor.name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
-                  <CardTitle className="text-xl text-center">{sponsor.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-primary font-semibold mb-2">{sponsor.tier} Sponsor</p>
-                  <p className="text-muted-foreground text-sm">{sponsor.contribution}</p>
-                </CardContent>
-              </Card>
+              <SponsorCard key={index} sponsor={sponsor} />
             ))}
           </div>
 
