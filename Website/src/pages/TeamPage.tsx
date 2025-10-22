@@ -24,52 +24,137 @@ const TeamPage = () => {
   // Leadership and Project Leads
   const leadership: TeamMember[] = [
     {
-      name: "Alex Chen",
-      role: "Team Lead",
-      imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+      name: "Md. Shohel",
+      role: "President",
+      imageUrl: "",
       socialLinks: [
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
-          url: "https://linkedin.com/in/alexchen",
+          url: "",
           label: "LinkedIn"
         },
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
-          url: "mailto:alex.chen@robotics.edu",
+          url: "",
           label: "Email"
         }
       ]
     },
     {
-      name: "Sarah Johnson",
-      role: "Software Lead",
-      imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+      name: "Rahat Hossain Rony",
+      role: "Vice President",
+      imageUrl: "",
       socialLinks: [
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
-          url: "https://linkedin.com/in/sarahjohnson",
+          url: "",
           label: "LinkedIn"
         },
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
-          url: "mailto:sarah.johnson@robotics.edu",
+          url: "",
           label: "Email"
         }
       ]
     },
     {
-      name: "Marcus Rodriguez",
-      role: "Electronics Lead",
-      imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+      name: "Rubaet Toha",
+      role: "General Secretary",
+      imageUrl: "",
       socialLinks: [
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
-          url: "https://linkedin.com/in/marcusrodriguez",
+          url: "",
           label: "LinkedIn"
         },
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
-          url: "mailto:marcus.rodriguez@robotics.edu",
+          url: "",
+          label: "Email"
+        }
+      ]
+    },
+    {
+      name: "Md. Ridoy Hossen",
+      role: "Asst. General Secretary",
+      imageUrl: "",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "",
+          label: "Email"
+        }
+      ]
+    },
+    {
+      name: "Habibur Rahman",
+      role: "Tresurer",
+      imageUrl: "",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "",
+          label: "Email"
+        }
+      ]
+    },
+    {
+      name: "Alimul Jisan",
+      role: "Office Secretary",
+      imageUrl: "",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "",
+          label: "Email"
+        }
+      ]
+    },
+    {
+      name: "Jahid Hasan Sany",
+      role: "Organizing Secretary",
+      imageUrl: "",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "",
+          label: "Email"
+        }
+      ]
+    },
+    {
+      name: "Mehrab Hossain",
+      role: "Media Secretary",
+      imageUrl: "",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "",
           label: "Email"
         }
       ]
@@ -79,60 +164,130 @@ const TeamPage = () => {
   // Executive Members
   const executives: TeamMember[] = [
     {
-      name: "Emily Zhang",
-      role: "Project Manager",
-      imageUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+      name: "Sonjoy Paul",
+      role: "Executive Member",
+      imageUrl: "",
       socialLinks: [
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
-          url: "https://linkedin.com/in/emilyzhang",
+          url: "",
           label: "LinkedIn"
         },
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
-          url: "mailto:emily.zhang@robotics.edu",
+          url: "",
           label: "Email"
         }
       ]
     },
     {
-      name: "David Kim",
-      role: "Mechanical Engineer",
-      imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      name: "Md. Ahsan Habib",
+      role: "Executive Member",
+      imageUrl: "",
       socialLinks: [
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
-          url: "https://linkedin.com/in/davidkim",
+          url: "",
           label: "LinkedIn"
         },
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
-          url: "mailto:david.kim@robotics.edu",
+          url: "",
           label: "Email"
         }
       ]
     },
     {
-      name: "Lisa Patel",
-      role: "Software Engineer",
-      imageUrl: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
+      name: "Oli Ullah Fahad",
+      role: "Executive Member",
+      imageUrl: "",
       socialLinks: [
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
-          url: "https://linkedin.com/in/lisapatel",
+          url: "",
           label: "LinkedIn"
         },
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
-          url: "mailto:lisa.patel@robotics.edu",
+          url: "",
+          label: "Email"
+        }
+      ]
+    },
+    {
+      name: "Md. Mehedi Hasan",
+      role: "Executive Member",
+      imageUrl: "",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "",
+          label: "Email"
+        }
+      ]
+    },
+    {
+      name: "Anika Anjum Mim",
+      role: "Executive Member",
+      imageUrl: "",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "",
+          label: "Email"
+        }
+      ]
+    },
+    {
+      name: "Md. Shahriar Sumodro",
+      role: "Executive Member",
+      imageUrl: "",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "",
+          label: "Email"
+        }
+      ]
+    },
+    {
+      name: "Zubaida Islam Zuhi",
+      role: "Executive Member",
+      imageUrl: "",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "",
           label: "Email"
         }
       ]
     },
   ];
 
+
   // General Members
   const generalMembers: TeamMember[] = [
+    /*
     {
       name: "Michael Brown",
       role: "Member",
@@ -169,31 +324,33 @@ const TeamPage = () => {
         }
       ]
     },
+    */
   ];
+
 
   // Alumni Mentors & Advisors
   const alumniAdvisors: TeamMember[] = [
     {
-      name: "Dr. Robert Smith",
-      role: "Faculty Advisor",
-      imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
+      name: "Md. Al-Amin Sarker",
+      role: "Lecturer, Dept. of EEE",
+      imageUrl: "",
       socialLinks: [
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
-          url: "mailto:robert.smith@university.edu",
+          url: "",
           label: "Email"
         },
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/globe.svg",
-          url: "https://faculty.university.edu/rsmith",
+          url: "",
           label: "Website"
         }
       ]
     },
     {
-      name: "Amanda White",
-      role: "Alumni Mentor",
-      imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+      name: "Sumon Ahmed",
+      role: "Lecturer, Dept. of EEE",
+      imageUrl: "",
       socialLinks: [
         {
           icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
@@ -301,11 +458,12 @@ const TeamPage = () => {
           {/* Executive Members */}
           <TeamSection title="Executive Members" members={executives} />
 
-          {/* General Members */}
-          <TeamSection title="General Members" members={generalMembers} />
+          
+          {/* General Members 
+          <TeamSection title="General Members" members={generalMembers} />*/}
 
           {/* Alumni Mentors & Club Advisors */}
-          <TeamSection title="Alumni Mentors & Club Advisors" members={alumniAdvisors} />
+          <TeamSection title="Co-ordinator Panel" members={alumniAdvisors} />
 
           {/* Recruitment Section */}
           <div className="mt-24 mb-12 max-w-4xl mx-auto">
