@@ -1,17 +1,23 @@
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { ArrowLeft, Linkedin, Mail, Globe } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+// Social link interface for custom icons and URLs
+interface SocialLink {
+  icon: string; // URL to icon image (can be Google Drive link)
+  url: string;
+  label: string; // For accessibility
+}
 
 // Team member interface for type safety
 interface TeamMember {
   name: string;
   role: string;
-  imageUrl: string;
-  linkedin?: string;
-  email?: string;
-  website?: string;
+  imageUrl: string; // Google Drive link or any image URL
+  socialLinks?: SocialLink[];
 }
 
 const TeamPage = () => {
@@ -21,23 +27,52 @@ const TeamPage = () => {
       name: "Alex Chen",
       role: "Team Lead",
       imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-      linkedin: "https://linkedin.com/in/alexchen",
-      email: "alex.chen@robotics.edu",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "https://linkedin.com/in/alexchen",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:alex.chen@robotics.edu",
+          label: "Email"
+        }
+      ]
     },
     {
       name: "Sarah Johnson",
       role: "Software Lead",
       imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
-      linkedin: "https://linkedin.com/in/sarahjohnson",
-      email: "sarah.johnson@robotics.edu",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "https://linkedin.com/in/sarahjohnson",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:sarah.johnson@robotics.edu",
+          label: "Email"
+        }
+      ]
     },
-    
     {
       name: "Marcus Rodriguez",
       role: "Electronics Lead",
       imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-      linkedin: "https://linkedin.com/in/marcusrodriguez",
-      email: "marcus.rodriguez@robotics.edu",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "https://linkedin.com/in/marcusrodriguez",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:marcus.rodriguez@robotics.edu",
+          label: "Email"
+        }
+      ]
     },
   ];
 
@@ -47,22 +82,52 @@ const TeamPage = () => {
       name: "Emily Zhang",
       role: "Project Manager",
       imageUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-      linkedin: "https://linkedin.com/in/emilyzhang",
-      email: "emily.zhang@robotics.edu",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "https://linkedin.com/in/emilyzhang",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:emily.zhang@robotics.edu",
+          label: "Email"
+        }
+      ]
     },
     {
       name: "David Kim",
       role: "Mechanical Engineer",
       imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
-      linkedin: "https://linkedin.com/in/davidkim",
-      email: "david.kim@robotics.edu",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "https://linkedin.com/in/davidkim",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:david.kim@robotics.edu",
+          label: "Email"
+        }
+      ]
     },
     {
       name: "Lisa Patel",
       role: "Software Engineer",
       imageUrl: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
-      linkedin: "https://linkedin.com/in/lisapatel",
-      email: "lisa.patel@robotics.edu",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "https://linkedin.com/in/lisapatel",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:lisa.patel@robotics.edu",
+          label: "Email"
+        }
+      ]
     },
   ];
 
@@ -72,19 +137,37 @@ const TeamPage = () => {
       name: "Michael Brown",
       role: "Member",
       imageUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
-      email: "michael.brown@robotics.edu",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:michael.brown@robotics.edu",
+          label: "Email"
+        }
+      ]
     },
     {
       name: "Jennifer Lee",
       role: "Member",
       imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop",
-      email: "jennifer.lee@robotics.edu",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:jennifer.lee@robotics.edu",
+          label: "Email"
+        }
+      ]
     },
     {
       name: "Chris Taylor",
       role: "Member",
       imageUrl: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop",
-      email: "chris.taylor@robotics.edu",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:chris.taylor@robotics.edu",
+          label: "Email"
+        }
+      ]
     },
   ];
 
@@ -94,66 +177,90 @@ const TeamPage = () => {
       name: "Dr. Robert Smith",
       role: "Faculty Advisor",
       imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
-      email: "robert.smith@university.edu",
-      website: "https://faculty.university.edu/rsmith",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:robert.smith@university.edu",
+          label: "Email"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/globe.svg",
+          url: "https://faculty.university.edu/rsmith",
+          label: "Website"
+        }
+      ]
     },
     {
       name: "Amanda White",
       role: "Alumni Mentor",
       imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
-      linkedin: "https://linkedin.com/in/amandawhite",
-      email: "amanda.white@alumni.edu",
+      socialLinks: [
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/linkedin.svg",
+          url: "https://linkedin.com/in/amandawhite",
+          label: "LinkedIn"
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/mail.svg",
+          url: "mailto:amanda.white@alumni.edu",
+          label: "Email"
+        }
+      ]
     },
   ];
 
   // Reusable component for rendering a team member card
-  const TeamMemberCard = ({ member }: { member: TeamMember }) => (
-    <Card className="border-border bg-card hover:border-primary transition-all duration-300 w-64">
-      <CardHeader className="flex flex-col items-center space-y-4 pb-4">
-        <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-primary/20">
-          <img 
-            src={member.imageUrl} 
-            alt={member.name}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="text-center space-y-2">
-          <h3 className="text-xl font-bold text-foreground">{member.name}</h3>
-          <p className="text-primary font-semibold">{member.role}</p>
-        </div>
-      </CardHeader>
-      <CardContent className="flex justify-center gap-3 pb-6">
-        {member.linkedin && (
-          <a 
-            href={member.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
-          >
-            <Linkedin className="w-5 h-5 text-primary" />
-          </a>
-        )}
-        {member.email && (
-          <a 
-            href={`mailto:${member.email}`}
-            className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
-          >
-            <Mail className="w-5 h-5 text-primary" />
-          </a>
-        )}
-        {member.website && (
-          <a 
-            href={member.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
-          >
-            <Globe className="w-5 h-5 text-primary" />
-          </a>
-        )}
-      </CardContent>
-    </Card>
-  );
+  const TeamMemberCard = ({ member }: { member: TeamMember }) => {
+    const [imgError, setImgError] = useState(false);
+    
+    return (
+      <Card className="border-border bg-card hover:border-primary transition-all duration-300 w-64">
+        <CardHeader className="flex flex-col items-center space-y-4 pb-4">
+          <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-primary/20 bg-primary/5 flex items-center justify-center">
+            {!imgError ? (
+              <img 
+                src={member.imageUrl} 
+                alt={member.name}
+                className="w-full h-full object-cover"
+                onError={() => setImgError(true)}
+              />
+            ) : (
+              <svg 
+                className="w-20 h-20 text-primary/50" 
+                fill="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+            )}
+          </div>
+          <div className="text-center space-y-2">
+            <h3 className="text-xl font-bold text-foreground">{member.name}</h3>
+            <p className="text-primary font-semibold">{member.role}</p>
+          </div>
+        </CardHeader>
+        <CardContent className="flex justify-center gap-3 pb-6">
+          {member.socialLinks?.map((link, index) => (
+            <a 
+              key={index}
+              href={link.url}
+              target={link.url.startsWith('mailto:') ? undefined : "_blank"}
+              rel={link.url.startsWith('mailto:') ? undefined : "noopener noreferrer"}
+              className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+              aria-label={link.label}
+            >
+              <img 
+                src={link.icon} 
+                alt={link.label}
+                className="w-5 h-5"
+                style={{ filter: 'invert(47%) sepia(86%) saturate(1753%) hue-rotate(359deg) brightness(102%) contrast(95%)' }}
+              />
+            </a>
+          ))}
+        </CardContent>
+      </Card>
+    );
+  };
 
   // Reusable section component
   const TeamSection = ({ title, members }: { title: string; members: TeamMember[] }) => (
@@ -199,6 +306,29 @@ const TeamPage = () => {
 
           {/* Alumni Mentors & Club Advisors */}
           <TeamSection title="Alumni Mentors & Club Advisors" members={alumniAdvisors} />
+
+          {/* Recruitment Section */}
+          <div className="mt-24 mb-12 max-w-4xl mx-auto">
+            <Card className="border-border bg-card/50 backdrop-blur">
+              <CardContent className="pt-12 pb-12 px-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 text-center">
+                  Want to Join Our Team?
+                </h2>
+                <p className="text-lg text-foreground/90 leading-relaxed text-center mb-8">
+                  We welcome anybody and everybody who are enthusiastic builders, coders, and designers. 
+                  Whether you're a seasoned engineer or just starting out, there's a place for you on our team. 
+                  Stop by our lab which is located in the Engineering Building, Room 201, or reach out to our leadership.
+                </p>
+                <div className="flex justify-center">
+                  <Link to="/contact">
+                    <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg px-8">
+                      Get in Touch
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </main>
     </div>
