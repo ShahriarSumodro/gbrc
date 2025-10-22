@@ -10,7 +10,6 @@ const MembershipFeePage = () => {
   const BKASH_NUMBER = "01712345678";
   const NAGAD_NUMBER = "01712345678";
   
-  // REPLACE THESE WITH YOUR ACTUAL WEB APP URLs
   const CURRENT_MONTH_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyudAO1HRU7GbvfPBA4SiQs10G616uqnKAOvoWsSqgAdSp6jhpym126uusbhsZkwZZ4Iw/exec";
   const OTHER_MONTHS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3GXrwiPle2wO1NdpwU3mtCBcNPz29jwFnd9iCJeGkKV_kRiB6NG5vl-EdK2teAAoc/exec";
 
@@ -61,7 +60,6 @@ const MembershipFeePage = () => {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 5 }, (_, i) => currentYear - 1 + i);
 
-  // Get current month and year
   const getCurrentMonth = () => {
     return months[new Date().getMonth()];
   };
@@ -70,7 +68,6 @@ const MembershipFeePage = () => {
     return new Date().getFullYear();
   };
 
-  // Check if selected month/year is current
   const isCurrentMonthYear = () => {
     return formData.month === getCurrentMonth() && 
            parseInt(formData.year) === getCurrentYear();
@@ -95,40 +92,55 @@ const MembershipFeePage = () => {
 
     try {
       const paymentData = {
-        ...formData,
-        amount: MEMBERSHIP_FEE
+        name: formData.name,
+        department: formData.department,
+        batch: formData.batch,
+        memberType: formData.memberType,
+        month: formData.month,
+        year: formData.year,
+        paymentMethod: formData.paymentMethod,
+        transactionId: formData.transactionId,
+        amount: MEMBERSHIP_FEE.toString()
       };
 
-      // Determine which script URL to use
       const scriptUrl = isCurrentMonthYear() ? CURRENT_MONTH_SCRIPT_URL : OTHER_MONTHS_SCRIPT_URL;
       const paymentType = isCurrentMonthYear() ? "current month" : "archive";
 
       console.log(`Submitting to ${paymentType} sheet:`, paymentData);
 
-      await fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(paymentData)
+      // Create FormData object
+      const formDataToSend = new FormData();
+      Object.keys(paymentData).forEach(key => {
+        formDataToSend.append(key, paymentData[key as keyof typeof paymentData]);
       });
 
-      alert(`Payment information submitted for ${formData.month} ${formData.year}! 
-Your payment has been recorded in the ${paymentType} sheet. We'll verify and confirm shortly.`);
-      
-      setFormData({
-        name: "",
-        department: "",
-        batch: "",
-        memberType: "",
-        month: "",
-        year: "",
-        paymentMethod: "",
-        transactionId: ""
+      // Use fetch without no-cors mode and with redirect follow
+      const response = await fetch(scriptUrl, {
+        method: 'POST',
+        body: formDataToSend,
+        redirect: 'follow'
       });
-      setShowPaymentInfo(false);
-      setSelectedMethod("");
+
+      // Since Google Apps Script returns HTML, we just check if the request succeeded
+      if (response.ok || response.redirected) {
+        alert(`Payment information submitted for ${formData.month} ${formData.year}! 
+Your payment has been recorded in the ${paymentType} sheet. We'll verify and confirm shortly.`);
+        
+        setFormData({
+          name: "",
+          department: "",
+          batch: "",
+          memberType: "",
+          month: "",
+          year: "",
+          paymentMethod: "",
+          transactionId: ""
+        });
+        setShowPaymentInfo(false);
+        setSelectedMethod("");
+      } else {
+        throw new Error('Submission failed');
+      }
 
     } catch (error) {
       console.error('Error submitting payment:', error);
@@ -161,7 +173,6 @@ Your payment has been recorded in the ${paymentType} sheet. We'll verify and con
               Pay your monthly membership fee to maintain active status and enjoy all team benefits
             </p>
             
-            {/* Current Month Indicator */}
             <div className="mt-6 inline-block bg-primary/10 border border-primary/30 rounded-lg px-6 py-3">
               <p className="text-sm font-semibold text-primary">
                 Current Month: {getCurrentMonth()} {getCurrentYear()}
