@@ -1,37 +1,118 @@
-import Navigation from "@/components/Navigation";
+import { ArrowLeft } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Wrench, Flame, Plane, Zap, ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const ProjectsPage = () => {
+const GalleryPage = () => {
   const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>({});
 
-  const projects = [
+  const galleryItems = [
     {
-      icon: Wrench,
-      title: "Combat Robots",
-      description: "Our combat robotics team designs and fabricates robots that compete in various weight classes. We focus on weapon systems, armor design, and strategic combat tactics to create competitive machines that can withstand intense battles.",
+      id: 1,
+      title: "National Competition 2024",
+      category: "Competition",
       imageUrl: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop",
+      details: "Our team secured first place at the National Robotics Championship with our innovative combat robot design. The competition featured 50+ teams from across the country.",
+      date: "March 2024",
+      location: "Tech Arena, Silicon Valley"
     },
     {
-      icon: Flame,
-      title: "Autonomous Systems",
-      description: "Working on cutting-edge autonomous navigation systems using computer vision, LIDAR, and machine learning to create robots that can navigate complex environments independently and make intelligent decisions in real-time.",
-      imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
-    },
-    {
-      icon: Plane,
-      title: "Aerial Drones",
-      description: "From racing drones to research platforms, we develop custom aerial systems for various applications including aerial photography, surveying, and autonomous delivery. Our drones feature custom flight controllers and advanced stabilization systems.",
-      imageUrl: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&h=600&fit=crop",
-    },
-    {
-      icon: Zap,
-      title: "Smart Automation",
-      description: "Developing IoT-enabled automation systems that solve real-world problems, from smart home solutions to industrial automation prototypes. We integrate sensors, actuators, and intelligent control systems to create efficient automated solutions.",
+      id: 2,
+      title: "Advanced Workshop Series",
+      category: "Workshop",
       imageUrl: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop",
+      details: "Intensive weekend workshop covering autonomous navigation systems, computer vision, and machine learning integration for robotics applications.",
+      date: "February 2024",
+      location: "Engineering Lab 3"
+    },
+    {
+      id: 3,
+      title: "Autonomous Drone Build",
+      category: "Build",
+      imageUrl: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&h=600&fit=crop",
+      details: "Complete build of our latest autonomous drone prototype featuring advanced stabilization and GPS navigation. Successful test flight achieved 30-minute flight time.",
+      date: "January 2024",
+      location: "Workshop Bay 2"
+    },
+    {
+      id: 4,
+      title: "Tech Expo Showcase",
+      category: "Event",
+      imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
+      details: "Demonstrated our smart automation systems to over 1,000 visitors at the annual Tech Innovation Expo. Received outstanding feedback from industry professionals.",
+      date: "April 2024",
+      location: "Convention Center"
+    },
+    {
+      id: 5,
+      title: "Regional Battle Championship",
+      category: "Competition",
+      imageUrl: "https://images.unsplash.com/photo-1563191597-d23aa2f8da2f?w=800&h=600&fit=crop",
+      details: "Our 30lb combat robot dominated the regional championship, winning all preliminary rounds and securing the championship title with an undefeated record.",
+      date: "December 2023",
+      location: "Battle Arena West"
+    },
+    {
+      id: 6,
+      title: "Beginner's Robotics Workshop",
+      category: "Workshop",
+      imageUrl: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=600&fit=crop",
+      details: "Introduction to robotics workshop for new members covering basic electronics, mechanical design principles, and programming fundamentals.",
+      date: "November 2023",
+      location: "Student Center"
+    },
+    {
+      id: 7,
+      title: "Combat Robot V3 Assembly",
+      category: "Build",
+      imageUrl: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=800&h=600&fit=crop",
+      details: "Team collaboration on building our third-generation combat robot featuring improved weapon systems, reinforced armor, and enhanced mobility.",
+      date: "October 2023",
+      location: "Main Workshop"
+    },
+    {
+      id: 8,
+      title: "STEM Outreach Day",
+      category: "Event",
+      imageUrl: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop",
+      details: "Community outreach event where we introduced robotics to local high school students, inspiring the next generation of engineers and innovators.",
+      date: "September 2023",
+      location: "City High School"
+    },
+    {
+      id: 9,
+      title: "International RoboGames",
+      category: "Competition",
+      imageUrl: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&h=600&fit=crop",
+      details: "Competed against teams from 15 countries at the prestigious International RoboGames. Earned bronze medal in the autonomous navigation category.",
+      date: "August 2023",
+      location: "Tokyo, Japan"
+    },
+    {
+      id: 10,
+      title: "Advanced Soldering Workshop",
+      category: "Workshop",
+      imageUrl: "https://images.unsplash.com/photo-1581092583537-20d51876f3ef?w=800&h=600&fit=crop",
+      details: "Specialized workshop on advanced soldering techniques, PCB design, and circuit debugging for electronics enthusiasts and experienced members.",
+      date: "July 2023",
+      location: "Electronics Lab"
+    },
+    {
+      id: 11,
+      title: "Smart Home System Build",
+      category: "Build",
+      imageUrl: "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=600&fit=crop",
+      details: "Completed our IoT-enabled smart home automation system project featuring voice control, motion sensors, and smartphone integration.",
+      date: "June 2023",
+      location: "Project Room 4"
+    },
+    {
+      id: 12,
+      title: "Alumni Reunion Showcase",
+      category: "Event",
+      imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop",
+      details: "Annual alumni reunion where past members shared their career journeys and current members showcased recent projects. Great networking and mentorship opportunities.",
+      date: "May 2023",
+      location: "Alumni Hall"
     },
   ];
 
@@ -44,28 +125,36 @@ const ProjectsPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <span className="text-2xl font-bold text-foreground tracking-wider">RoboTech</span>
+            <button className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-2 rounded-md">
+              Contact
+            </button>
+          </div>
+        </div>
+      </nav>
+
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-6">
-          <Link to="/">
-            <Button variant="ghost" className="mb-8">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Home
-            </Button>
-          </Link>
+          <button className="mb-8 flex items-center gap-2 hover:text-primary transition-colors">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Home
+          </button>
           
           <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 tracking-tight">
-            Our Projects
+            Gallery
           </h1>
           <p className="text-xl text-muted-foreground mb-16 max-w-3xl">
-            Explore the innovative robotics projects we're working on. Each project represents our commitment to pushing the boundaries of what's possible in robotics.
+            Explore our journey through images. From intense competitions to late-night build sessions, these moments capture our passion for robotics.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <div 
-                key={index} 
-                className="h-[400px]"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryItems.map((item, index) => (
+              <div
+                key={item.id}
+                className="h-[450px]"
                 style={{ perspective: '1000px' }}
               >
                 <div
@@ -77,46 +166,67 @@ const ProjectsPage = () => {
                   onClick={() => toggleFlip(index)}
                 >
                   {/* Front Side - Image */}
-                  <Card 
+                  <Card
                     className="absolute w-full h-full border-border bg-card hover:border-primary transition-colors duration-300 overflow-hidden"
-                    style={{ 
+                    style={{
                       backfaceVisibility: 'hidden',
                       WebkitBackfaceVisibility: 'hidden'
                     }}
                   >
                     <div className="relative w-full h-full">
-                      <img 
-                        src={project.imageUrl} 
-                        alt={project.title}
+                      <img
+                        src={item.imageUrl}
+                        alt={item.title}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
-                      <div className="absolute top-4 left-4 bg-background/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-border">
-                        <h3 className="text-lg font-bold text-primary">{project.title}</h3>
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent" />
+                      
+                      {/* Title at top */}
+                      <div className="absolute top-4 left-4 right-4 bg-background/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-border">
+                        <h3 className="text-base font-bold text-primary line-clamp-2">{item.title}</h3>
                       </div>
-                      <div className="absolute bottom-4 right-4 text-muted-foreground text-sm bg-background/60 backdrop-blur-sm px-3 py-1 rounded-full">
-                        Click to flip
+
+                      {/* Hint at bottom */}
+                      <div className="absolute bottom-4 right-4 text-muted-foreground text-xs bg-background/60 backdrop-blur-sm px-3 py-1 rounded-full">
+                        Click to view details
                       </div>
                     </div>
                   </Card>
 
-                  {/* Back Side - Description */}
-                  <Card 
-                    className="absolute w-full h-full bg-card border-primary overflow-hidden p-8 flex flex-col justify-center"
-                    style={{ 
+                  {/* Back Side - Details */}
+                  <Card
+                    className="absolute w-full h-full bg-card border-primary overflow-hidden p-6 flex flex-col justify-center"
+                    style={{
                       backfaceVisibility: 'hidden',
                       WebkitBackfaceVisibility: 'hidden',
                       transform: 'rotateY(180deg)'
                     }}
                   >
-                    <h3 className="text-3xl font-bold text-primary mb-6 text-center">
-                      {project.title}
-                    </h3>
-                    <p className="text-foreground/80 leading-relaxed text-left">
-                      {project.description}
-                    </p>
-                    <div className="mt-6 text-center text-muted-foreground text-sm">
-                      Click to flip back
+                    <div className="space-y-4">
+                      <div className="text-center">
+                        <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold mb-3">
+                          {item.category}
+                        </span>
+                        <h3 className="text-2xl font-bold text-primary mb-4">
+                          {item.title}
+                        </h3>
+                      </div>
+                      
+                      <p className="text-foreground/80 leading-relaxed text-left text-sm">
+                        {item.details}
+                      </p>
+                      
+                      <div className="space-y-2 text-left pt-4 border-t border-border">
+                        <p className="text-sm text-muted-foreground">
+                          <span className="font-semibold text-foreground">Date:</span> {item.date}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          <span className="font-semibold text-foreground">Location:</span> {item.location}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4 text-center text-muted-foreground text-xs">
                     </div>
                   </Card>
                 </div>
@@ -129,4 +239,4 @@ const ProjectsPage = () => {
   );
 };
 
-export default ProjectsPage;
+export default GalleryPage;
