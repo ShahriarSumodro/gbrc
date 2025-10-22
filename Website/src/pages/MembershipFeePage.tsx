@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,7 +9,10 @@ const MembershipFeePage = () => {
   const MEMBERSHIP_FEE = 500;
   const BKASH_NUMBER = "01712345678";
   const NAGAD_NUMBER = "01712345678";
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwzieFt8lAJqhg51Hrf24VelT_Nj7MjILkPyAUuYQexUDpCA02QuAT7glZJFNN7F30Eig/exec";
+  
+  // REPLACE THESE WITH YOUR ACTUAL WEB APP URLs
+  const CURRENT_MONTH_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyudAO1HRU7GbvfPBA4SiQs10G616uqnKAOvoWsSqgAdSp6jhpym126uusbhsZkwZZ4Iw/exec";
+  const OTHER_MONTHS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3GXrwiPle2wO1NdpwU3mtCBcNPz29jwFnd9iCJeGkKV_kRiB6NG5vl-EdK2teAAoc/exec";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -59,6 +61,21 @@ const MembershipFeePage = () => {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 5 }, (_, i) => currentYear - 1 + i);
 
+  // Get current month and year
+  const getCurrentMonth = () => {
+    return months[new Date().getMonth()];
+  };
+
+  const getCurrentYear = () => {
+    return new Date().getFullYear();
+  };
+
+  // Check if selected month/year is current
+  const isCurrentMonthYear = () => {
+    return formData.month === getCurrentMonth() && 
+           parseInt(formData.year) === getCurrentYear();
+  };
+
   const handlePaymentMethodSelect = (method: string) => {
     setSelectedMethod(method);
     setFormData({ ...formData, paymentMethod: method });
@@ -82,7 +99,13 @@ const MembershipFeePage = () => {
         amount: MEMBERSHIP_FEE
       };
 
-      await fetch(GOOGLE_SCRIPT_URL, {
+      // Determine which script URL to use
+      const scriptUrl = isCurrentMonthYear() ? CURRENT_MONTH_SCRIPT_URL : OTHER_MONTHS_SCRIPT_URL;
+      const paymentType = isCurrentMonthYear() ? "current month" : "archive";
+
+      console.log(`Submitting to ${paymentType} sheet:`, paymentData);
+
+      await fetch(scriptUrl, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
@@ -91,7 +114,8 @@ const MembershipFeePage = () => {
         body: JSON.stringify(paymentData)
       });
 
-      alert(`Payment information submitted for ${formData.month} ${formData.year}! We'll verify and confirm shortly.`);
+      alert(`Payment information submitted for ${formData.month} ${formData.year}! 
+Your payment has been recorded in the ${paymentType} sheet. We'll verify and confirm shortly.`);
       
       setFormData({
         name: "",
@@ -116,16 +140,19 @@ const MembershipFeePage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-6">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="container mx-auto px-6 py-4">
           <Link to="/">
-            <Button variant="ghost" className="mb-8">
+            <Button variant="ghost">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Home
             </Button>
           </Link>
+        </div>
+      </nav>
 
+      <main className="pt-24 pb-16">
+        <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 tracking-tight">
               Membership Fee Payment
@@ -133,6 +160,13 @@ const MembershipFeePage = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Pay your monthly membership fee to maintain active status and enjoy all team benefits
             </p>
+            
+            {/* Current Month Indicator */}
+            <div className="mt-6 inline-block bg-primary/10 border border-primary/30 rounded-lg px-6 py-3">
+              <p className="text-sm font-semibold text-primary">
+                Current Month: {getCurrentMonth()} {getCurrentYear()}
+              </p>
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -274,8 +308,18 @@ const MembershipFeePage = () => {
                       </select>
                     </div>
                     {formData.month && formData.year && (
-                      <div className="mt-3 p-3 bg-primary/10 border border-primary/30 rounded-lg text-center">
-                        <span className="font-semibold text-primary">Paying for: {formData.month} {formData.year}</span>
+                      <div className={`mt-3 p-3 rounded-lg text-center border-2 ${
+                        isCurrentMonthYear() 
+                          ? 'bg-primary/10 border-primary/30' 
+                          : 'bg-blue-500/10 border-blue-500/30'
+                      }`}>
+                        <span className={`font-semibold ${
+                          isCurrentMonthYear() ? 'text-primary' : 'text-blue-500'
+                        }`}>
+                          Paying for: {formData.month} {formData.year}
+                          {isCurrentMonthYear() && ' (Current Month)'}
+                          {!isCurrentMonthYear() && ' (Archive)'}
+                        </span>
                       </div>
                     )}
                   </div>
