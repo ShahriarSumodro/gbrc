@@ -10,6 +10,7 @@ const Navigation = () => {
     { name: "Team", path: "/team" },
     { name: "Sponsors", path: "/sponsors" },
     { name: "Gallery", path: "/gallery" },
+    { name: "Membership", path: "/membership" },
   ];
 
   return (
