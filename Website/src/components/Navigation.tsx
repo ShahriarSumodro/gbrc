@@ -13,8 +13,7 @@ const Navigation = () => {
     { name: "Projects", path: "/projects" },
     { name: "Team", path: "/team" },
     { name: "Sponsors", path: "/sponsors" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Membership", path: "/membership" },
+    { name: "Gallery", path: "/gallery" }
   ];
 
   return (
@@ -87,3 +86,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
