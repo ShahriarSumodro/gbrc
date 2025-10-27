@@ -20,28 +20,28 @@ const Stats = () => {
   const { ref, isVisible } = useScrollAnimation();
   
   const stats = [
-    { number: 500, label: "Active Members", suffix: "+" },
-    { number: 50, label: "Projects Completed", suffix: "+" },
-    { number: 15, label: "Competition Wins", suffix: "+" },
-    { number: 10, label: "Years of Excellence", suffix: "+" },
+    { number: 40, label: "Active Members", suffix: "+" },
+    { number: 70, label: "Projects Completed", suffix: "+" },
+    ///{ number: 15, label: "Competition Wins", suffix: "+" },
+    { number: 7, label: "Years of Excellence", suffix: "+" },
   ];
 
   return (
-    <section 
-      ref={ref as React.RefObject<HTMLElement>}
-      className={`py-24 bg-card transition-all duration-1000 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-    >
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <StatItem key={index} stat={stat} isVisible={isVisible} />
-          ))}
-        </div>
+  <section
+    ref={ref as React.RefObject<HTMLElement>}
+    className={`py-24 bg-card transition-all duration-1000 ${
+      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+    }`}
+  >
+    <div className="container mx-auto px-6">
+      <div className="flex flex-wrap justify-center items-center gap-16 w-full">
+        {stats.map((stat, index) => (
+          <StatItem key={index} stat={stat} isVisible={isVisible} />
+        ))}
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 };
 
 export default Stats;
