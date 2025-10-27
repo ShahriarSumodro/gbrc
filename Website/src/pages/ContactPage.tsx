@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -5,10 +6,71 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, MapPin, Phone, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { toast } from "@/components/ui/sonner";
 
 const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Replace this URL with your Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxrXpFVB3cLQwc5NT5mDJX7MgpQWAK1OFZNTrRjPzCExM3c08cK6xBZGUG4Wxvu_sdL/exec";
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Important for Google Apps Script
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      // With no-cors mode, we can't read the response
+      // But if no error is thrown, it likely succeeded
+      toast.success("Message sent successfully! We'll get back to you soon.");
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error("Failed to send message. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-6">
@@ -39,7 +101,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <CardTitle className="text-lg">Email</CardTitle>
-                        <p className="text-muted-foreground">contact@robotics.edu</p>
+                        <p className="text-muted-foreground">gbroboticsclub2025@gmail.com</p>
                       </div>
                     </div>
                   </CardHeader>
@@ -53,7 +115,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <CardTitle className="text-lg">Phone</CardTitle>
-                        <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                        <p className="text-muted-foreground">+880 1602-156195</p>
                       </div>
                     </div>
                   </CardHeader>
@@ -67,7 +129,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <CardTitle className="text-lg">Location</CardTitle>
-                        <p className="text-muted-foreground">Engineering Building, Room 201</p>
+                        <p className="text-muted-foreground">6th Floor, A Block, EEE, Robotics Club, Gono Bishwabidyalay</p>
                       </div>
                     </div>
                   </CardHeader>
@@ -79,25 +141,59 @@ const ContactPage = () => {
               <h2 className="text-3xl font-bold text-primary mb-8">Send a Message</h2>
               <Card className="border-border bg-card">
                 <CardContent className="pt-6">
-                  <form className="space-y-6">
+                  <form className="space-y-6" onSubmit={handleSubmit}>
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                      <Input id="name" placeholder="Your name" />
+                      <Input 
+                        id="name" 
+                        placeholder="Your name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        required
+                      />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                      <Input id="email" type="email" placeholder="your.email@example.com" />
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        placeholder="your.email@example.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        required
+                      />
                     </div>
                     <div>
                       <label htmlFor="subject" className="block text-sm font-medium mb-2">Subject</label>
-                      <Input id="subject" placeholder="What is this about?" />
+                      <Input 
+                        id="subject" 
+                        placeholder="What is this about?"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        required
+                      />
                     </div>
                     <div>
                       <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-                      <Textarea id="message" placeholder="Your message..." rows={6} />
+                      <Textarea 
+                        id="message" 
+                        placeholder="Your message..." 
+                        rows={6}
+                        value={formData.message}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        required
+                      />
                     </div>
-                    <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
-                      Send Message
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
                 </CardContent>
@@ -106,6 +202,7 @@ const ContactPage = () => {
           </div>
         </div>
       </main>
+      <Footer/>
     </div>
   );
 };
