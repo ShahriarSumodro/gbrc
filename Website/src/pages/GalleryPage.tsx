@@ -1,26 +1,10 @@
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-
-// Mock components since we can't import them
-const Navigation = () => (
-  <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-sm border-b border-border z-50">
-    <div className="container mx-auto px-6 py-4">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold text-primary">Robotics Club</h1>
-      </div>
-    </div>
-  </nav>
-);
-
-const Footer = () => (
-  <footer className="bg-background border-t border-border py-8 mt-auto">
-    <div className="container mx-auto px-6 text-center text-muted-foreground">
-      <p>© 2024 Robotics Club. All rights reserved.</p>
-    </div>
-  </footer>
-);
 
 const GalleryPage = () => {
   const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>({});
@@ -202,12 +186,12 @@ const GalleryPage = () => {
       <Navigation />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-6">
-          <a href="/" className="inline-block mb-8">
-            <Button variant="ghost">
+          <Link to="/">
+            <Button variant="ghost" className="mb-8">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Home
             </Button>
-          </a>
+          </Link>
           
           <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 tracking-tight">
             Gallery
@@ -290,6 +274,7 @@ const GalleryPage = () => {
 
                         {/* Hint at bottom */}
                         <div className="absolute bottom-4 right-4 text-muted-foreground text-xs bg-background/60 backdrop-blur-sm px-3 py-1 rounded-full">
+                          Click to view details
                         </div>
                       </div>
                     </Card>
@@ -328,6 +313,7 @@ const GalleryPage = () => {
                       </div>
                       
                       <div className="mt-4 text-center text-muted-foreground text-xs">
+                        Click to flip back
                       </div>
                     </Card>
                   </div>
