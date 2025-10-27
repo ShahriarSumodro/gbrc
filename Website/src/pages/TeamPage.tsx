@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ArrowLeft } from "lucide-react";
@@ -299,7 +300,7 @@ const TeamPage = () => {
     {
       name: "Md. Shahriar Sumodro",
       role: "Executive Member",
-      imageUrl: "https://i.ibb.co.com/KpJDBFnW/499969607-2084489555394378-720689542365571010-n.jpg", // Replace with ImgBB URL
+      imageUrl: "https://i.ibb.co.com/bgsrNHHG/1753994462431.png", // Replace with ImgBB URL
       socialLinks: [
         {
           icon: "https://cdn-icons-png.flaticon.com/512/174/174857.png",
@@ -331,10 +332,10 @@ const TeamPage = () => {
     {
       name: "Md. Al-Amin Sarker",
       role: "Lecturer, Dept. of EEE",
-      imageUrl: "https://i.ibb.co.com/Vpx2jvNk/download-5.jpg", // Replace with ImgBB URL
+      imageUrl: "https://i.ibb.co.com/hFyhHvfB/492032068-2125408451290885-257658191850409217-n.jpg", // Replace with ImgBB URL
       socialLinks: [
         {
-          icon: "https://cdn-icons-png.flaticon.com/512/813/813418.png",
+          icon: "https://i.ibb.co.com/N6SprHW4/browser.png",
           url: "https://gonouniversity.edu.bd/eee/employees/md-al-amin-sarker/",
           label: "Website"
         },
@@ -351,7 +352,7 @@ const TeamPage = () => {
       imageUrl: "https://i.ibb.co.com/r8xTCLF/Sumon.jpg", // Replace with ImgBB URL
       socialLinks: [
         {
-          icon: "https://cdn-icons-png.flaticon.com/512/813/813418.png",
+          icon: "https://i.ibb.co.com/N6SprHW4/browser.png",
           url: "https://gonouniversity.edu.bd/eee/employees/sumon-ahmed/",
           label: "Website"
         },
@@ -365,7 +366,7 @@ const TeamPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-6">
@@ -411,6 +412,7 @@ const TeamPage = () => {
           </div>
         </div>
       </main>
+      <Footer/>
     </div>
   );
 };
