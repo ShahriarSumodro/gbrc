@@ -30,21 +30,22 @@ const Contact = () => {
                 <Mail className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-semibold mb-2">Email</h3>
-              <p className="text-muted-foreground">contact@robotics.edu</p>
+              <p className="text-muted-foreground">roboticsclub.gb@gmail.com</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-semibold mb-2">Phone</h3>
-              <p className="text-muted-foreground">+1 (555) 123-4567</p>
+              <p className="text-muted-foreground">+880 1602-156195</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <MapPin className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-semibold mb-2">Location</h3>
-              <p className="text-muted-foreground">Engineering Building, Room 201</p>
+              <p className="text-muted-foreground">6th Floor, A Block, EEE, Robotics Club,<br/> 
+              Nolam, P.O. Mirzanagar via Savar Cantonment, Ashulia, Savar, Dhaka-1344.</p>
             </div>
           </div>
 
