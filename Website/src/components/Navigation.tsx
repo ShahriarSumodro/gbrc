@@ -23,7 +23,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <img src={robotLogo} alt="Robotics Team Logo" className="h-10 w-10" />
-            <span className="text-2xl font-bold text-foreground tracking-wider">RoboTech</span>
+            <span className="text-2xl font-bold text-foreground tracking-wider">GB Robotics Club</span>
           </Link>
 
           {/* Desktop Navigation */}
