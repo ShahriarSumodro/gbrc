@@ -14,10 +14,9 @@ const Hero = () => {
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
-          <span className="text-primary">University</span>{" "}
-          <span className="text-foreground">Robotics</span>
+          <span className="text-primary">Gono Bishwabidyalay</span>{" "}
           <br />
-          <span className="text-foreground">Team</span>
+          <span className="text-foreground">Robotics Club</span>
         </h1>
 
         <p className="max-w-3xl mx-auto text-lg md:text-xl text-foreground/90 mb-8 leading-relaxed">
