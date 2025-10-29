@@ -101,7 +101,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <CardTitle className="text-lg">Email</CardTitle>
-                        <p className="text-muted-foreground">gbroboticsclub2025@gmail.com</p>
+                        <p className="text-muted-foreground">roboticsclub.gb@gmail.com</p>
                       </div>
                     </div>
                   </CardHeader>
