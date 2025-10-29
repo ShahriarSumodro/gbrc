@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Wrench, Flame, Plane, Zap } from "lucide-react";
+import { Wrench, Flame, Plane, Zap, Trophy, TrophyIcon, CircuitBoard, Cpu, Workflow } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Projects = () => {
@@ -8,10 +8,10 @@ const Projects = () => {
   
   const projects = [
     {
-      icon: Wrench,
-      title: "Combat Robots",
-      description: "Design and build competitive fighting robots for tournaments and competitions.",
-      details: "Our combat robotics team designs and fabricates robots that compete in various weight classes. We focus on weapon systems, armor design, and strategic combat tactics to create competitive machines that can withstand intense battles.",
+      icon: Trophy,
+      title: "Competitive Robots",
+      description: "Engineer high-performance robots to excel in various tech challenges.",
+      details: "Build and refine robots designed to perform, compete, and push the limits of engineering creativity. These projects enhance teamwork, problem-solving, and technical innovation.",
     },
     {
       icon: Flame,
@@ -20,10 +20,10 @@ const Projects = () => {
       details: "Working on cutting-edge autonomous navigation systems using computer vision, LIDAR, and machine learning to create robots that can navigate complex environments independently and make intelligent decisions in real-time.",
     },
     {
-      icon: Plane,
-      title: "Aerial Drones",
-      description: "Create innovative drone systems for various applications and research.",
-      details: "From racing drones to research platforms, we develop custom aerial systems for various applications including aerial photography, surveying, and autonomous delivery. Our drones feature custom flight controllers and advanced stabilization systems.",
+      icon: Workflow,
+      title: "Practical Applications",
+      description: "Design functional robots that solve real-world problems and serve communities.",
+      details: "Create functional robots that bring technology into everyday life through real-world solutions. Members learn to turn ideas into impactful engineering outcomes.",
     },
     {
       icon: Zap,
