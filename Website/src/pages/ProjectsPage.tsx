@@ -12,42 +12,68 @@ const ProjectsPage = () => {
   const projects = [
     {
       icon: Wrench,
-      title: "Combat Robots",
-      description: "Our combat robotics team designs and fabricates robots that compete in various weight classes. We focus on weapon systems, armor design, and strategic combat tactics to create competitive machines that can withstand intense battles.",
+      title: "Digital communication training kit",
+      description: "Digital communication involves signal processing (like sampling and quantization via PCM), modulation/demodulation (e.g., Delta Modulation or ADM) for transmission, and system integration to ensure all parts work together effectively.",
       images: [
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1563191597-d23aa2f8da2f?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=800&h=600&fit=crop"
+        "https://i.ibb.co.com/Y7Hqwjvz/20251027-151413.jpg"
       ],
     },
     {
       icon: Flame,
-      title: "Autonomous Systems",
-      description: "Working on cutting-edge autonomous navigation systems using computer vision, LIDAR, and machine learning to create robots that can navigate complex environments independently and make intelligent decisions in real-time.",
+      title: "Human Following Robot",
+      description: "This project involves an autonomous robot designed to help people with their work by following them. It uses ultrasonic and IR sensors for distance measurement and collision avoidance, with a microprocessor and controller handling all processing and motor control.",
       images: [
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop"
+        "https://i.ibb.co.com/r2zkhckM/20251027-153018-1.jpg"
       ],
     },
     {
       icon: Plane,
-      title: "Aerial Drones",
-      description: "From racing drones to research platforms, we develop custom aerial systems for various applications including aerial photography, surveying, and autonomous delivery. Our drones feature custom flight controllers and advanced stabilization systems.",
+      title: "Smart Parking System",
+      description: "This automated system is a solution to parking problems, including congestion and theft, in urban areas. It utilizes infra-red (IR) sensors at the entry and exit points of a parking lot to automatically track vehicle movement. The core function is to count the cars and display the number of available parking spaces on an LCD screen, managed by an Arduino Nano microcontroller.",
       images: [
-        "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1581092583537-20d51876f3ef?w=800&h=600&fit=crop"
+        "https://i.ibb.co.com/hJDn7NS2/20251027-151057.jpg"
       ],
     },
     {
       icon: Zap,
-      title: "Smart Automation",
-      description: "Developing IoT-enabled automation systems that solve real-world problems, from smart home solutions to industrial automation prototypes. We integrate sensors, actuators, and intelligent control systems to create efficient automated solutions.",
+      title: "DC to DC setup boost voltage regulator",
+      description: "This report focuses on designing a boost regulator to increase DC voltage, aiming to assist engineers in boosting DC voltage from 18 Volts to 76 Volts. The research documents the modification of a switching converter, including calculations and tests, with simulation results showing it can potentially boost the voltage up to 170 Volts.",
       images: [
-        "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=600&fit=crop"
+        "https://i.ibb.co.com/rGmThtXG/20251027-151128.jpg"
       ],
     },
+    {
+      icon: Zap,
+      title: "Distance locator for an underground cable fault",
+      description: "This project presents a DISTANCE LOCATOR FOR AN UNDERGROUND CABLE FAULT, which aims to detect the precise location of a fault in underground cables from a base station. The prototype uses Ohm's law and measures the voltage across a series wire change to determine the fault distance, which is then displayed on a 16×2 LCD interfaced with an Arduino microcontroller.",
+      images: [
+        "https://i.ibb.co.com/m5F1Ncxr/20251027-152717.jpg"
+      ],
+    },
+    {
+      icon: Zap,
+      title: "Thermoelectric Refrigerator",
+      description: "This project describes a low-cost, lightweight thermoelectric refrigerator that uses no harmful CFCs. It operates on AC or DC power, making it an environmentally friendly solution ideal for remote or low-income communities.",
+      images: [
+        "https://i.ibb.co.com/bZBgqHj/20251027-1528461.jpg"
+      ],
+    },
+    {
+      icon: Zap,
+      title: "Smart blind stick for visually impaired",
+      description: "This project proposes an advanced blind stick to improve navigation for visually disabled people. It is integrated with an ultrasonic sensor, along with light and water sensing, to detect obstacles ahead using ultrasonic waves. If an obstacle is detected as being too close, the Atmega328 microcontroller processes the data and triggers a buzzer to alert the user.",
+      images: [
+        "https://i.ibb.co.com/23dMJdsV/20251027-152105.jpg"
+      ],
+    },
+    {
+      icon: Zap,
+      title: "Upto 370V DC from AC",
+      description: "This project investigates converting Alternating Current (AC) to High Voltage Direct Current (HVDC), up to 370 volts, using a multiplier circuit. It successfully generates HVDC but identifies the need for further optimization in circuit design and component selection to improve stability and efficiency.",
+      images: [
+        "https://i.ibb.co.com/PG5N6z7v/20251027-152800.jpg"
+      ],
+    }
   ];
 
   const toggleFlip = (index: number) => {
@@ -126,9 +152,7 @@ const ProjectsPage = () => {
                           src={project.images[currentIndex]}
                           alt={`${project.title} - Image ${currentIndex + 1}`}
                           className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
-                        
+                        />                        
                         {/* Title at top */}
                         <div className="absolute top-4 left-4 right-4 bg-background/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-border">
                           <h3 className="text-lg font-bold text-primary">{project.title}</h3>
