@@ -6,9 +6,10 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center">
       <div 
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920)` }}
+        style={{ backgroundImage: `url(https://gonouniversity.edu.bd/wp-content/uploads/2024/11/slider-img-5.jpg)` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div>
+        {/* Gradient overlay - only applies in dark mode */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background dark:from-background/60 dark:via-background/80 dark:to-background"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-6 text-center">
@@ -51,4 +52,4 @@ const Hero = () => {
 
 export default Hero;
 
-
+///(https://gonouniversity.edu.bd/wp-content/uploads/2024/11/slider-img-5.jpg
