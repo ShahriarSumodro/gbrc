@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import robotLogo from "@/assets/robot-logo.png";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Navigation = () => {
   const location = useLocation();
@@ -40,7 +41,8 @@ const Navigation = () => {
             ))}
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             <Link to="/contact">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6">
                 Contact
@@ -65,19 +67,24 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`block py-2 px-4 rounded-md text-foreground/80 hover:text-foreground hover:bg-accent transition-colors ${
-                  location.pathname === item.path ? "text-primary font-bold bg-accent" : ""
+                className={`block py-2 px-4 rounded-md transition-colors ${
+                  location.pathname === item.path 
+                    ? "text-primary font-bold bg-primary/10" 
+                    : "text-foreground hover:text-foreground hover:bg-accent"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
-            <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
-                Contact
-              </Button>
-            </Link>
+            <div className="flex items-center gap-2 px-4">
+              <ThemeToggle />
+              <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="flex-1">
+                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
+                  Contact
+                </Button>
+              </Link>
+            </div>
           </div>
         )}
       </div>
@@ -86,4 +93,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
